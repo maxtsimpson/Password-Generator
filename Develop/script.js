@@ -15,11 +15,12 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
 
-  //initialise an empty array for the password
+   //initialise an empty array for the password
   var complexPassword = []
-  //get a length between 9 and 15. some apps have a min pass length of 9 from experience 
-  //longer than 15 would be too hard to remember
-  var passwordLength = getRandomIntInclusive(9,15)
+  
+  //prompt the user for the length of the password
+  passwordLength = promptForPasswordLength();
+  
 
   //until we get to password length append a random char 
   for (let index = 0; index < passwordLength; index++) {
@@ -72,4 +73,44 @@ function randomCharacter() {
   }
   // console.log("char: " + char);
   return char
+}
+
+function promptForPasswordLength(){
+
+  var invalidInput = true;
+
+  while(invalidInput) {
+    
+      var passwordLengthString = parseInt(prompt("how long would you like your password?\r\n enter a number between 8 and 128"));
+
+      console.log("passwordLength: " + passwordLengthString);
+
+      //decided to check for bogus values and use continue
+      // rather than have a lot of nested if statements. i think this is simpler and more efficient
+      if(!Number.isInteger(passwordLengthString))
+      {
+          // console.log("the password length must be an integer (whole number) i.e. 10 or 42");
+          alert("the password length must be an integer (whole number)");
+          continue;
+      }
+
+      if(passwordLengthString < 8){
+          // console.log("the password length must be at least 8");
+          alert("the password length must be at least 8")
+          continue;
+      }
+
+      if(passwordLengthString > 128){
+          // console.log("the password length cannot be greater than 128");
+          alert("the password length cannot be greater than 128")
+          continue;
+      }
+
+      //the input has passed checks and must be valid. therefore invalid is false
+      invalidInput = false;
+      passwordLength = passwordLengthString;
+  }
+
+  return passwordLength;
+
 }
