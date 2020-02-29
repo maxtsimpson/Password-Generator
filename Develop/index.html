@@ -1,34 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Modal -->
+  <div class="modal fade" id="password-options-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Password Options</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
+        <div class="modal-body container">
+          <div class="row pt-2 mx-2 align-items-center">
+            <p>Character sets to include:</p>
+          </div>
+          <div class="form-group row mx-2 align-items-center">
+            <input type="checkbox" id="lowercase-letters-checkbox" class="col-1">
+            <label class="form-check-label" for="lowercase-letters-checkbox" class="col-3">Lowercase Letters</label>
+          </div>
+          <div class="form-group row mx-2 align-items-center">
+            <input type="checkbox" id="uppercase-letters-checkbox" class="col-1">
+            <label class="form-check-label" for="uppercase-letters-checkbox" class="form-control col-3">Uppercase
+              Letters</label>
+          </div>
+          <div class="form-group row mx-2 align-items-center">
+            <input type="checkbox" id="numbers-checkbox" class="col-1">
+            <label class="form-check-label" for="numbers-checkbox" class="form-control col-3">Numbers(0-9)</label>
+          </div>
+          <div class="form-group row mx-2 align-items-center">
+            <input type="checkbox" id="special-checkbox" class="col-1">
+            <label class="form-check-label" for="special-checkbox" class="form-control col-3">Special Characters (^,$ etc.)</label>
+          </div>
+          <div class="form-group row mx-2 align-items-center">
+            <!-- i made this a textarea instead of using bootstrap number validation so i could demonstrate js functions -->
+            <label class="form-check-label" for="password-length-input" class="form-control col-3">Password Length:</label>
+            <input type="text" class="form-control" id="password-length-input"></input>
+          </div>
         </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="modal-generate-button">Generate</button>
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <div class="wrapper">
+    <header>
+      <h1>Password Generator</h1>
+    </header>
+    <div class="card">
+      <div class="card-header">
+        <h2>Generate a Password</h2>
+      </div>
+      <div class="card-body">
+        <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
+      </div>
+      <div class="card-footer">
+        <button id="generate" class="btn" data-toggle="modal" data-target="#password-options-modal">Generate Password</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>  
+</body>
+
 </html>
