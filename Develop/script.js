@@ -35,7 +35,7 @@ let modalGenerate = function (){
     
   } else {
     console.log("the password options are NOT valid");
-    promptToReEnterPassword();
+    promptToReEnterPasswordOptions();
   }
 }
 
@@ -151,10 +151,6 @@ function generatePassword(passwordLength) {
   
 }
 
-function validatePasswordOptions() {
-    var lowercaseCheckbox = document.querySelector("#lowercase-letters-checkbox");
-}
-
 
 //this function is from mozilla. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomIntInclusive(min, max) {
@@ -240,19 +236,19 @@ function promptForPasswordLength(){
 }
 
 // a function to validate the form inputs and ask you to re-enter if they arent correct
-function promptToReEnterPassword() {
+function promptToReEnterPasswordOptions() {
 
-  //at least one character set should be selected
+  console.log("in promptToReEnterPasswordOptions");
+  // i know this is not good. i should not be repeating myself
+  if(!(lowerLettersCheck.checked || upperLettersCheck.checked || numbersCheck.checked || specialCharsCheck.checked)){
+    alert("at least one of the character sets to include must be selected");
+    return;
+  };
 
-  //password length must be between 8 and 128 chars
-
+  var passLength = parseInt(passwordLengthInput.value);
+  if (!(Number.isInteger(passLength) && passLength >= 8 && passLength <= 128)) {
+    alert("the password length must be a number between 8 and 128");
+    return;
+  }
 
 }
-
-// //this uses some jquery. i've just played with jquery a little not used it everywhere
-// $("#generate").button().on("click", function () {
-//   //valid the password options
-//   console.log("in generate click event")
-
-  
-// });
