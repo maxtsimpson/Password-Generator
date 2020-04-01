@@ -1,3 +1,5 @@
+https://maxtsimpson.github.io/Password-Generator/
+
 # 03 JavaScript: Password Generator
 
 When pressing the generate password button a modal is displayed
