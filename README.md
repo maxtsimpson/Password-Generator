@@ -1,4 +1,4 @@
-https://maxtsimpson.github.io/Password-Generator/
+https://maxtsimpson.github.io/Password-Generator/Develop/
 
 # 03 JavaScript: Password Generator
 
